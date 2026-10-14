@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Deploy to Dev DB') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'sql-ci-cred',
+        withCredentials([usernamePassword(credentialsId: 'sql-cicd',
                          usernameVariable: 'DB_USER', passwordVariable: 'DB_PASS')]) {
           powershell './scripts/deploy.ps1 -Server $env:DB_SERVER -Database $env:DB_NAME -User $env:DB_USER -Password $env:DB_PASS'
         }
